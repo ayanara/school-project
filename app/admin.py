@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Curso
+
+
+@admin.register(Curso)
+class CursoAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Informações Básicas ', {'fields': ('nome', 'descricao')}),
+        ('Horário ', {'fields': ('periodo', 'modalidade')})
+
+    ]
+
+    list_display = ('nome', 'descricao', 'periodo', 'modalidade')
